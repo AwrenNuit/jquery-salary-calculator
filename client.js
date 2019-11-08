@@ -55,13 +55,26 @@ function deleteEmployee(){
     console.log('minus:', minusSalary);
     $(this).closest('tr').remove();
     allEmployees.splice(index - 1, 1);
-    total -= minusSalary;
+    total -= minusSalary / 12;
     $('#total-monthly').empty();
-    $('#total-monthly').append(`<p id="total">$${total}</p>`);
+
+    if(total > 20000){
+        $('#total-monthly').append(`<p id="total">$${total}</p>`);
+    }
+    else{
+        $('#total-monthly').append(`<p>$${total}</p>`);
+    }
 }
 
 function totalSalary(annual){
-        total += annual;
+        total += annual / 12;
+        console.log('total:', total);
         $('#total-monthly').empty();
+
+        if(total > 20000){
         $('#total-monthly').append(`<p id="total">$${total}</p>`);
+        }
+        else{
+            $('#total-monthly').append(`<p>$${total}</p>`);
+        }
 }

@@ -1,16 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(255, 247, 238);
+}
+
+header {
+    text-align: center;
+    background-color: lightskyblue;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+}
+
+input {
+    width: 100px;
+}
+
+#submit-emp {
+    font-size: 1.2rem;
+    background-color: rgb(253, 124, 124);
+}
+
 table {
     border-collapse: collapse;
+    width: 90%;
 }
 
 th, td {
     border: 1px solid black;
+    text-align: center;
 }
 th {
-    background-color: grey;
+    background-color: lightskyblue;
 }
 
 tr:nth-child(even){
-    background-color: lightgrey;
+    background-color: rgb(224, 224, 224);
+}
+
+tr:nth-child(odd){
+    background-color: rgb(255, 255, 255);
 }
 
 #total {
