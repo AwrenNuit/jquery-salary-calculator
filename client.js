@@ -51,8 +51,13 @@ function addToTable(employee){
 function deleteEmployee(){
     let row = $(this).closest('tr');
     let index = $('tr').index(row);
+    let minusSalary = allEmployees[index - 1].annualSalary;
+    console.log('minus:', minusSalary);
     $(this).closest('tr').remove();
     allEmployees.splice(index - 1, 1);
+    total -= minusSalary;
+    $('#total-monthly').empty();
+    $('#total-monthly').append(`<p id="total">$${total}</p>`);
 }
 
 function totalSalary(annual){
