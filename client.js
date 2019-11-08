@@ -7,6 +7,7 @@ function onReady(){
 }
 
 let allEmployees = [];
+let total = 0;
 
 function addEmployee(event){
     event.preventDefault();
@@ -15,10 +16,10 @@ function addEmployee(event){
         lastName: $('#add-last').val(),
         ID: $('#add-id').val(),
         title: $('#add-title').val(),
-        annualSalary: $('#add-salary').val()
+        annualSalary: parseInt($('#add-salary').val())
     }
     allFieldsFilled(newEmployee);
-    
+    totalSalary(newEmployee.annualSalary);
     // $('#add-first').val('');
     // $('#add-last').val('');
     // $('#add-id').val('');
@@ -50,7 +51,12 @@ function addToTable(employee){
 function deleteEmployee(){
     let row = $(this).closest('tr');
     let index = $('tr').index(row);
-    console.log(index);
     $(this).closest('tr').remove();
     allEmployees.splice(index - 1, 1);
+}
+
+function totalSalary(annual){
+        total += annual;
+        $('#total-monthly').empty();
+        $('#total-monthly').append(`<p id="total">$${total}</p>`);
 }

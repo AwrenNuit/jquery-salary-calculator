@@ -5,3 +5,14 @@ table {
 th, td {
     border: 1px solid black;
 }
+th {
+    background-color: grey;
+}
+
+tr:nth-child(even){
+    background-color: lightgrey;
+}
+
+#total {
+    background-color: red;
+}
