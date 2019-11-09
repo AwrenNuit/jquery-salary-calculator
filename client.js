@@ -19,20 +19,21 @@ function addEmployee(event){
         annualSalary: parseInt($('#add-salary').val())
     }
     allFieldsFilled(newEmployee);
-    totalSalary(newEmployee.annualSalary);
+    total += newEmployee.annualSalary / 12;
+    updateMonthlyTotal(total);
     // $('#add-first').val('');
     // $('#add-last').val('');
     // $('#add-id').val('');
     // $('#add-title').val('');
     // $('#add-salary').val('');
-}
+} //end addEmployee
 
 function allFieldsFilled(newEmployee){
     if($('#add-first').val() !== '' && $('#add-last').val() !== '' && $('#add-id').val() !== '' && $('#add-title').val() !== '' && $('#add-salary').val() !== ''){
         allEmployees.push(newEmployee);
         addToTable(allEmployees);
     }
-}
+} //end allFieldsFilled
 
 function addToTable(employee){
     $('#table-data').empty();
@@ -42,39 +43,28 @@ function addToTable(employee){
         <td>${name.lastName}</td>
         <td>${name.ID}</td>
         <td>${name.title}</td>
-        <td>${name.annualSalary}</td>
+        <td>$${name.annualSalary}</td>
         <td><button class="delete">DELETE</button></td>
         </tr>`);
     }
-}
+} //end addToTable
 
 function deleteEmployee(){
     let row = $(this).closest('tr');
     let index = $('tr').index(row);
     let minusSalary = allEmployees[index - 1].annualSalary;
-    console.log('minus:', minusSalary);
     $(this).closest('tr').remove();
     allEmployees.splice(index - 1, 1);
     total -= minusSalary / 12;
-    $('#total-monthly').empty();
+    updateMonthlyTotal(total);
+} //end deleteEmployee
 
-    if(total > 20000){
-        $('#total-monthly').append(`<p id="total">$${total}</p>`);
-    }
-    else{
-        $('#total-monthly').append(`<p>$${total}</p>`);
-    }
-}
-
-function totalSalary(annual){
-        total += annual / 12;
-        console.log('total:', total);
+function updateMonthlyTotal(total){
         $('#total-monthly').empty();
-
         if(total > 20000){
-        $('#total-monthly').append(`<p id="total">$${total}</p>`);
+        $('#total-monthly').append(`<span id="total">$${total}</span>`);
         }
         else{
-            $('#total-monthly').append(`<p>$${total}</p>`);
+            $('#total-monthly').append(`<span>$${total}</span>`);
         }
-}
+} //end updateMonthlyTotal
