@@ -23,11 +23,11 @@ function addEmployee(event){
     subtotal += newEmployee.annualSalary / 12;
     total = Math.round(subtotal * 100)/100;
     updateMonthlyTotal(total);
-    // $('#add-first').val('');
-    // $('#add-last').val('');
-    // $('#add-id').val('');
-    // $('#add-title').val('');
-    // $('#add-salary').val('');
+    $('#add-first').val('');
+    $('#add-last').val('');
+    $('#add-id').val('');
+    $('#add-title').val('');
+    $('#add-salary').val('');
 } //end addEmployee
 
 function allFieldsFilled(newEmployee){
@@ -64,7 +64,7 @@ function deleteEmployee(event){
     let index = $('tr').index(row);
     let minusSalary = allEmployees[index - 1].annualSalary;
     
-    if (confirm(`Are you sure you want to delete ${allEmployees.firstName} ${allEmployees.lastName}?`)){
+    if (confirm(`Are you sure you want to delete ${allEmployees[index - 1].firstName} ${allEmployees[index - 1].lastName}?`)){
         console.log('in yes');
     $(this).closest('tr').remove();
     allEmployees.splice(index - 1, 1);
