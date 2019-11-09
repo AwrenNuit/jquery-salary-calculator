@@ -21,11 +21,11 @@ function addEmployee(event){
     allFieldsFilled(newEmployee);
     total += newEmployee.annualSalary / 12;
     updateMonthlyTotal(total);
-    // $('#add-first').val('');
-    // $('#add-last').val('');
-    // $('#add-id').val('');
-    // $('#add-title').val('');
-    // $('#add-salary').val('');
+    $('#add-first').val('');
+    $('#add-last').val('');
+    $('#add-id').val('');
+    $('#add-title').val('');
+    $('#add-salary').val('');
 } //end addEmployee
 
 function allFieldsFilled(newEmployee){
