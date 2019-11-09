@@ -7,6 +7,7 @@ function onReady(){
 }
 
 let allEmployees = [];
+let subtotal = 0;
 let total = 0;
 
 function addEmployee(event){
@@ -19,13 +20,14 @@ function addEmployee(event){
         annualSalary: parseInt($('#add-salary').val())
     }
     allFieldsFilled(newEmployee);
-    total += newEmployee.annualSalary / 12;
+    subtotal += newEmployee.annualSalary / 12;
+    total = Math.round(subtotal * 100)/100;
     updateMonthlyTotal(total);
-    $('#add-first').val('');
-    $('#add-last').val('');
-    $('#add-id').val('');
-    $('#add-title').val('');
-    $('#add-salary').val('');
+    // $('#add-first').val('');
+    // $('#add-last').val('');
+    // $('#add-id').val('');
+    // $('#add-title').val('');
+    // $('#add-salary').val('');
 } //end addEmployee
 
 function allFieldsFilled(newEmployee){
@@ -49,14 +51,28 @@ function addToTable(employee){
     }
 } //end addToTable
 
-function deleteEmployee(){
+function confirmAlert(event){
+    if (confirm(`Are you sure you want to delete ${allEmployees.firstName} ${allEmployees.lastName}?`)){
+        deleteEmployee();
+    }
+    else{
+    }
+}
+
+function deleteEmployee(event){
     let row = $(this).closest('tr');
     let index = $('tr').index(row);
     let minusSalary = allEmployees[index - 1].annualSalary;
+    
+    if (confirm(`Are you sure you want to delete ${allEmployees.firstName} ${allEmployees.lastName}?`)){
+        console.log('in yes');
     $(this).closest('tr').remove();
     allEmployees.splice(index - 1, 1);
-    total -= minusSalary / 12;
+    subtotal -= minusSalary / 12;
+    total = Math.round(subtotal * 100)/100;
     updateMonthlyTotal(total);
+    }
+    else{ }
 } //end deleteEmployee
 
 function updateMonthlyTotal(total){
