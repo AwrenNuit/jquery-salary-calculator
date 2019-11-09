@@ -12,19 +12,11 @@ header {
     background-color: lightskyblue;
     padding: 15px;
     margin-bottom: 10px;
-    animation: stealth 10s alternate infinite;
-    transition: 5s;
-}
-
-header:hover {
-    font-size: 4rem;
-    transition: 1s;
 }
 
 .row {
     display: flex;
     width: 100%;
-    animation: rotate2 30s linear infinite;
 }
 
 .column {
@@ -41,18 +33,11 @@ input {
     width: 100px;
     padding: 2px;
     font-size: .8rem;
-    animation: rotate 3s alternate infinite;
 }
 
 #submit-emp {
     font-size: 1.2rem;
-    transition: 10s;
 }
-
-#submit-emp:hover {
-    font-size: 8rem;
-}
-
 
 table {
     border-collapse: collapse;
@@ -81,7 +66,6 @@ tr:nth-child(odd){
 
 h2 {
     margin-left: 10px;
-    animation: slide 8s alternate infinite;
 }
 
 button {
@@ -92,45 +76,8 @@ button {
     background-color:#4eb5f1;
     text-align:center;
     transition: all 0.2s;
-    animation: rotate2 10s linear infinite;
 }
 
 button:hover {
     background-color:#4095c6;
-}
-
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes rotate2 {
-    0% {
-        transform: rotate(0deg);
-    }
-    10%{
-        transform: rotate(90deg);
-    }
-    20%{
-        transform: rotate(900deg);
-    }
-    50%{
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes stealth {
-    75% {
-        color: lightskyblue;
-    }
-    100% {
-        color: #fff7ee;
-    }
 }
