@@ -44,14 +44,14 @@
         <h2>Employees:</h2>
         <div class="row">
             <div class="column">
-                <table>
+                <table id="my-table">
                     <thead>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>ID</th>
-                            <th>Title</th>
-                            <th>Annual Salary</th>
+                            <th onclick="sortTable(0)" id="sort-first">First Name</th>
+                            <th onclick="sortTable(1)" id="sort-last">Last Name</th>
+                            <th onclick="sortTable(2)" id="sort-id">ID</th>
+                            <th onclick="sortTable(3)" id="sort-title">Title</th>
+                            <th onclick="sortTable(4)" id="sort-salary">Annual Salary</th>
                             <th>Remove Employee</th>
                         </tr>
                     </thead>

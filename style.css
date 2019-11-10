@@ -52,6 +52,11 @@ th {
     background-color: #87cefa;
 }
 
+th:hover {
+    background-color: #68a1c5;
+    cursor: pointer;
+}
+
 tr:nth-child(even){
     background-color: rgb(224, 224, 224);
 }

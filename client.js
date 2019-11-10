@@ -9,6 +9,57 @@ let allEmployees = [];
 let subtotal = 0;
 let total = 0;
 
+function sortTable(n){
+    let rows, i, x, y, shouldSwitch, switchCount = 0;
+    let table = $('table')[0];
+    let switching = true;
+    let dir = 'asc';
+
+    while(switching){
+        switching = false;
+        rows = table.rows;
+        for(i=1; i< (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName('td')[n];
+            y = rows[i + 1].getElementsByTagName('td')[n];
+            if(dir === 'asc'){
+                if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+            else if(dir === 'desc'){
+                if(x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()){
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+        }
+        if(shouldSwitch){
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchCount++;
+            allEmployees = $('tbody tr').map(function(i, row){
+                let salary = row.cells[4].textContent;
+
+                return {
+                    'firstName': row.cells[0].textContent,
+                    'lastName': row.cells[1].textContent,
+                    'ID': +row.cells[2].textContent,
+                    'title': row.cells[3].textContent,
+                    'annualSalary': +salary.replace(/\$/g, '')
+                }
+            }).get();
+        }
+        else{
+            if(switchCount === 0 && dir === 'asc'){
+                dir = 'desc';
+                switching = true;
+            }
+        }
+    }
+} //end sortTable
+
 function addEmployee(event){
     event.preventDefault();
 
@@ -74,7 +125,6 @@ function deleteEmployee(event){
 
 function updateMonthlyTotal(total){
         $('#total-monthly').empty();
-        
         if(total > 20000){
         $('#total-monthly').append(`<span id="total">$${total}</span>`);
         }
