@@ -52,7 +52,7 @@ th {
     background-color: #87cefa;
 }
 
-th:hover {
+.table-heading:hover {
     background-color: #68a1c5;
     cursor: pointer;
 }

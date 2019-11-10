@@ -3,6 +3,7 @@ $(document).ready(onReady);
 function onReady(){
     $('#submit-emp').on('click', addEmployee);
     $('#table-data').on('click', '.delete', deleteEmployee);
+    $('.table-heading').wrapInner('<span title="sort column" />');
 }
 
 let allEmployees = [];
