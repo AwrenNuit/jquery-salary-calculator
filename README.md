@@ -1,9 +1,15 @@
-# Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+## jQuery Salary Calculator
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+This is an employee salary calculator. It allows the user to add in employee information, sort the table by column, and shows the total monthly salary expenses at the bottom.
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/github-finalization-assignment).
+
+## Technologies used
+-jQuery
+-Javascript
+
+
+Big thanks to everyone at Prime for helping me learn new skills!
+
+If you have any questions or concerns, please email me at awren.nuit@gmail.com
