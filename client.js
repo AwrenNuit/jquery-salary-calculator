@@ -1,10 +1,8 @@
-$(document).ready(onReady);
-
-function onReady(){
+$(function(){
     $('#submit-emp').on('click', addEmployee);
     $('#table-data').on('click', '.delete', deleteEmployee);
     $('.table-heading').wrapInner('<span title="sort column" />');
-}
+});
 
 let allEmployees = [];
 let subtotal = 0;
@@ -59,12 +57,12 @@ function sortTable(n){
             }
         }
     }
-} //end sortTable
+}
 
 function addEmployee(event){
     event.preventDefault();
 
-    if($('#add-first').val() !== '' && $('#add-last').val() !== '' && $('#add-id').val() !== '' && $('#add-title').val() !== '' && $('#add-salary').val() !== ''){
+    if($('#add-first').val() && $('#add-last').val() && $('#add-id').val() && $('#add-title').val() && $('#add-salary').val()){
         let newEmployee = {
             firstName: $('#add-first').val(),
             lastName: $('#add-last').val(),
@@ -75,17 +73,14 @@ function addEmployee(event){
         addEmployeeToArray(newEmployee);
         addToTotal(newEmployee);
     }
-    $('#add-first').val('');
-    $('#add-last').val('');
-    $('#add-id').val('');
-    $('#add-title').val('');
-    $('#add-salary').val('');
-} //end addEmployee
+    $('input').val('');
+    $('#add-first').focus();
+}
 
 function addEmployeeToArray(newEmployee){
-        allEmployees.push(newEmployee);
-        addToTable(allEmployees);
-} //end addEmployeeToArray
+    allEmployees.push(newEmployee);
+    addToTable(allEmployees);
+}
 
 function addToTable(employee){
     $('#table-data').empty();
@@ -99,37 +94,36 @@ function addToTable(employee){
         <td><button class="delete">DELETE</button></td>
         </tr>`);
     }
-} //end addToTable
+}
 
 function addToTotal(cost){
-    if(Number.isInteger(cost.annualSalary)){
-        subtotal += cost.annualSalary / 12;
-        total = Math.round(subtotal * 100)/100;
-        updateMonthlyTotal(total);
-    }
-} //end addToTotal
+    subtotal += cost.annualSalary / 12;
+    total = Math.round(subtotal * 100)/100;
+    updateMonthlyTotal(total);
+}
 
 function deleteEmployee(event){
     let row = $(this).closest('tr');
     let index = $('tr').index(row);
     let minusSalary = allEmployees[index - 1].annualSalary;
+    let popup = confirm(`Are you sure you want to delete ${allEmployees[index - 1].firstName} ${allEmployees[index - 1].lastName}?`)
     
-    if (confirm(`Are you sure you want to delete ${allEmployees[index - 1].firstName} ${allEmployees[index - 1].lastName}?`)){
-    $(this).closest('tr').remove();
+    if(popup){
+    row.remove();
     allEmployees.splice(index - 1, 1);
     subtotal -= minusSalary / 12;
     total = Math.round(subtotal * 100)/100;
     updateMonthlyTotal(total);
     }
-    else{ }
-} //end deleteEmployee
+}
 
 function updateMonthlyTotal(total){
-        $('#total-monthly').empty();
-        if(total > 20000){
-        $('#total-monthly').append(`<span id="total">$${total}</span>`);
-        }
-        else{
-            $('#total-monthly').append(`<span>$${total}</span>`);
-        }
-} //end updateMonthlyTotal
+    total = total.toLocaleString();
+
+    if(total > 20000){
+    $('#total-monthly').html(`<span id="total">$${total}</span>`);
+    }
+    else{
+        $('#total-monthly').html(`<span>$${total}</span>`);
+    }
+}
