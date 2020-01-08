@@ -8,9 +8,6 @@ This is an employee salary calculator. It allows the user to add in employee inf
 - JavaScript
 - jQuery
 
-## Future Plans
-- Dry out the code
-
 Big thanks to everyone at Prime for helping me learn new skills!
 
 If you have any questions or concerns, please email me at awren.nuit@gmail.com
